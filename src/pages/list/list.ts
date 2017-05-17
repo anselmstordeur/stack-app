@@ -19,6 +19,21 @@ export class ListPage implements OnInit {
     this.listService.getList().then(items => this.items = items);
   }
 
+  addToList(): void {
+    this.listService.setItem({
+      title: (new Date()).getUTCSeconds().toString(),
+      description: 'The description....'
+    });
+  }
+
+  addBelowItem(item: item): void {
+    // redirect to add item page
+  }
+
+  removeFromList(title: string): void {
+    this.listService.deleteItem(title);
+  }
+
   ngOnInit(): void {
     this.getList();
   }

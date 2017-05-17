@@ -9,7 +9,7 @@
 
 <ion-content>
   <ion-list>
-    <ion-card *ngFor="let item of items" (click)="itemTapped($event, item)">
+    <ion-card *ngFor="let item of items" (click)="itemTapped($event, item)" (swipe)="removeFromList(item.title)">
       <ion-card-header>
         <ion-icon [name]="item.icon" item-left></ion-icon>
         {{item.title}}
@@ -17,6 +17,10 @@
       <ion-card-content>
         {{item.description}}
       </ion-card-content>
+      <button ion-button icon-left small (click)="addBelowItem(item)">
+        <ion-icon name="md-create"></ion-icon>
+        Add below
+      </button>
     </ion-card>
   </ion-list>
 </ion-content>
